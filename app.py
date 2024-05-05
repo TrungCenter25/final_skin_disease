@@ -11,8 +11,8 @@ app = Flask(__name__)
 api = Api(app)
 
 # model_path = r'EfficientNetB3_Model_22.tf'
-model = load_model('EfficientNetB2Classes.h5')
-working_dir = r'./App/'
+model = load_model('final_skin_disease/EfficientNetB2Classes.h5')
+working_dir = r'./final_skin_disease/'
 
 class_label_map = { 0: 'Melanoma',
                     1: 'Basal Cell Carcinoma',
@@ -84,7 +84,7 @@ def init():
 @app.route('/', methods=['POST'])
 def hostingBased():
     imagefile = request.files['imageFile']
-    image_path = "./App/images/" + imagefile.filename
+    image_path = "./final_skin_disease/images/" + imagefile.filename
     os.makedirs(os.path.dirname(image_path), exist_ok=True)
     imagefile.save(image_path)
 
